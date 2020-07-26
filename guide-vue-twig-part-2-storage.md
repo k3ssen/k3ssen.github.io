@@ -10,8 +10,8 @@
 ## Part 2: VueStorage
 
 In the previous part you've seen how you can pass data from Twig to Vue using a 
-global `vue` object. 
-When you're passing data quite often, you'll notice you often need to do things like this:
+global object. 
+When you're passing data quite often, you'll often need to do things like this:
 ```twig
 {% block script %}
     <script>
@@ -33,7 +33,7 @@ so that we no longer need to concern ourselves with handling this in a script-ta
 
 ## VueStorage
 
-This service let's you add values for specified keys to be fetched later as json:
+This service lets you add values for specified keys to be fetched later as json:
 
 ```php
 <?php
@@ -64,7 +64,7 @@ class VueStorage
     }
 
     /**
-     * put keys like 'main.sub.subsub' into a sub-array.
+     * convert paths like 'main.sub.subsub' into a sub-array.
      */
     protected function assignArrayByPath(&$arr, $path, $value) {
         $keys = explode('.', str_replace(['[', ']'], ['.', ''], $path));
@@ -121,7 +121,7 @@ class VueExtension extends AbstractExtension
 ```
 
 
-## `base.html.twig`
+## base.html.twig
 
 In the `template/base.html.twig` file we retrieve the data from the VueStorage service:
 
@@ -141,6 +141,9 @@ In the `template/base.html.twig` file we retrieve the data from the VueStorage s
 ```
 
 ## Example usage
+
+Now, simply by calling `{{ vue_data('currentPage', currentPage) }}` the server-side
+`currentPage` variable is made available to be used in Vue.
 
 ```twig
 {% extends 'base.html.twig' %}
@@ -163,9 +166,6 @@ In the `template/base.html.twig` file we retrieve the data from the VueStorage s
     </form>
 {% endblock %}
 ```
-
-Here, simply by calling `{{ vue_data('currentPage', currentPage) }}` the server-side
-`currentPage` variable is made available to be used in Vue.
 
 ## Globals and Observables
 

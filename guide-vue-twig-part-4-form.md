@@ -12,8 +12,9 @@
 Rendering a form in Twig could be as easy as using `{{ form(form) }}`, but when you want to use Vue in your
 form things can be more complicated.
 
-You could simply add `v-model` attributes to your fields and use something like
-`{{ vue_data('someTextField', form.someStringField.vars.data) }}`.
+You could simply add `v-model` attributes to your fields and use something like below:  
+`{{ vue_data('someTextField', form.someStringField.vars.data) }}`.  
+
 While this may be work out fine for one field, it becomes a pain if you want this for all fields, especially if you need
 to take different types into consideration. For example, an expanded ChoiceType requires
 that you put v-model on the radio buttons or checkboxes, but the value should be based on the ChoiceType itself.
@@ -22,8 +23,8 @@ Luckily, Symfony lets you add extensions for form types and by using the `FormTy
 can target all types in one go.
 
 By creating a `FormTypeExtension` we can add `v-model` to the fields that need one and we have access to all
-information we need to decide the value we need to put in the v-model. Because the `VueStorage` is a service,
-we can use it in this in our extensions.
+information we need to decide the value we need to put in the v-model. 
+We can use the `VueStorage` from part 2 to have our data added to be used in vue.
 
 ```php
 <?php
@@ -40,9 +41,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FormTypeExtension extends AbstractTypeExtension
 {
-    /**
-     * @var VueStorage
-     */
     private VueStorage $vueStorage;
 
     public function __construct(VueStorage $vueStorage)
@@ -136,8 +134,8 @@ It will let you do things like the following:
 {% endblock %}
 ```
 
-Certainly you'll still want to create vue components for complex stuff, but many forms just have
-some conditions where value of field A should affect field B. By combining Vue and Twig
+Certainly this doesn't cover complex forms for which you'll still want to create vue components for complex stuff,
+but many forms just have some conditions where value of field A should affect field B. By combining Vue and Twig
 this is now easier than ever before!
 
 {% endraw %}

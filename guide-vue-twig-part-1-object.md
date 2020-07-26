@@ -72,7 +72,7 @@ Have your file look like below:
 </html>
 ```
 This is just a bare base example that makes sure your assets are loaded. 
-Here we put the body inside an div with 'app' to make sure that the app-element
+Here we put the body inside a div with 'app' to make sure that the app-element
 is available to all pages.
 Additionally, a `script` block is added inside javascript to be used in
 other twig files.
@@ -110,11 +110,14 @@ replace the content of this `index.html.twig` file with the following:
 {% endblock %}
 ```
 
-In this file the `vue` object is created. It can contain all the logic your
+In this file the `vue` object can contain all the logic your
 vue-instance needs. You can put general stuff like delimiters in your app.js, but if
 you ever need you can overwrite it in this object.
 
 Since twig holds server-side data you can put any data here in this object, making it
 available to your vue-instance.
+
+> Tip: By renaming your `index.html.twig` to `index.vue.twig` IDE's like PhpStorm will have better
+> autocompletion for vue-components.
 
 {% endraw %}

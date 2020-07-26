@@ -23,6 +23,8 @@ For edge cases and/or more flexibility you can utilize Dynamic components.
 4. **v-models in your Symfony form**  
 Automatically apply v-models to your Symfony forms.
 
+It is assumed that you have some experience with both Symfony and Vuejs.
+
 #### Project setup
 
 First things first: you need a symfony project with webpack installed and vue enabled:

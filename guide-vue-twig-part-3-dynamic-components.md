@@ -1,3 +1,4 @@
+{% raw %}
 # Combine Twig and Vue: dynamic components
 
 So far, you've seen how to pass data from Twig to the Vue main instance, but there might be cases
@@ -50,3 +51,4 @@ By using the dynamic component you can use `:{ value }` twice, but with differen
 >[Symfony suggests](https://symfony.com/doc/current/frontend/encore/vuejs.html#using-vue-inside-twig-templates),
 >because when using ticks (`) content within ${ will be parsed as javascript-expression, which is treated different as
 > variables/expressions in vue.
+{% endraw %}

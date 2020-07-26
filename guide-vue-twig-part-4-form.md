@@ -1,3 +1,4 @@
+{% raw %}
 # Combine Twig and Vue
 ## Part 4 - Render your Symfony form in Vue
 
@@ -122,3 +123,5 @@ class FormTypeExtension extends AbstractTypeExtension
 
 With this extension all you need to do is set the `use_vue` option to `true` in any form you want. 
 This will have a `form` object added to the vue-data.
+
+{% endraw %}

@@ -1,3 +1,4 @@
+{% raw %}
 # Combine Twig and Vue
 
 Both Symfony and Vue are great, but combining them can be a hassle, especially when
@@ -137,3 +138,5 @@ you ever need you can overwrite it in this object.
 
 Since twig holds server-side data you can put any data here in this object, making it
 available to your vue-instance.
+
+{% endraw %}

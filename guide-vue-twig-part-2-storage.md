@@ -1,3 +1,4 @@
+{% raw %}
 # Combine Twig and Vue: storage
 
 In the previous part you've seen how you can pass data from Twig to Vue using a 
@@ -208,3 +209,4 @@ below:
 In this particular example it's not that different from adding information to the 
 main vue-instance data. However, you can use `$store.currentPage` in other vue components without resorting
 to vue-properties or emitting values.
+{% endraw %}

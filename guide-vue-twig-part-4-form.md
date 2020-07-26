@@ -1,22 +1,22 @@
 {% raw %}
 # Combine Twig and Vue
-## Part 4 - Render your Symfony form in Vue
+
+ [Intro](guide-vue-twig.md)
+| [Part 1: Passing down a vue object](guide-vue-twig-part-1-object.md)
+| [Part 2: VueStorage](guide-vue-twig-part-2-storage.md)
+| [Part 3: Dynamic components](guide-vue-twig-part-3-dynamic-components.md)
+| **[Part 4: v-models in your Symfony form](guide-vue-twig-part-4-form.md)**
+
+## Part 4: v-models in your Symfony form
 
 Rendering a form in Twig could be as easy as using `{{ form(form) }}`, but when you want to use Vue in your
 form things can be more complicated.
 
-### Basic approach
-One of the simplest approach would be adding `v-model` attributes to your fields.
-Then in your Twig you could add something like below:
-```twig
-{{ vue_data('someTextField', form.someStringField.vars.data) }}
-```
-
-While this may be simple for one field, it becomes a pain if you want this for all fields, especially if you need
+You could simply add `v-model` attributes to your fields and use something like
+`{{ vue_data('someTextField', form.someStringField.vars.data) }}`.
+While this may be work out fine for one field, it becomes a pain if you want this for all fields, especially if you need
 to take different types into consideration. For example, an expanded ChoiceType requires
 that you put v-model on the radio buttons or checkboxes, but the value should be based on the ChoiceType itself.
-
-### Automated approach
 
 Luckily, Symfony lets you add extensions for form types and by using the `FormType::class` as extended type you
 can target all types in one go.
@@ -123,5 +123,21 @@ class FormTypeExtension extends AbstractTypeExtension
 
 With this extension all you need to do is set the `use_vue` option to `true` in any form you want. 
 This will have a `form` object added to the vue-data.
+
+It will let you do things like the following:
+
+```twig
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    <button :disabled="!form.name || form.name.length < 2">Submit</button>
+    {{ form_end(form) }}
+{% endblock %}
+```
+
+Certainly you'll still want to create vue components for complex stuff, but many forms just have
+some conditions where value of field A should affect field B. By combining Vue and Twig
+this is now easier than ever before!
 
 {% endraw %}

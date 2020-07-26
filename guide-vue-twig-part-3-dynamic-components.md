@@ -1,5 +1,13 @@
 {% raw %}
-# Combine Twig and Vue: dynamic components
+# Combine Twig and Vue: 
+
+ [Intro](guide-vue-twig.md)
+| [Part 1: Passing down a vue object](guide-vue-twig-part-1-object.md)
+| [Part 2: VueStorage](guide-vue-twig-part-2-storage.md)
+| **[Part 3: Dynamic components](guide-vue-twig-part-3-dynamic-components.md)**
+| [Part 4: v-models in your Symfony form](guide-vue-twig-part-4-form.md)
+
+## Part 3: Dynamic components
 
 So far, you've seen how to pass data from Twig to the Vue main instance, but there might be cases
 where you've already wrapped your application in a vue-instance and want to use a different instance

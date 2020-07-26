@@ -1,5 +1,13 @@
 {% raw %}
-# Combine Twig and Vue: storage
+# Combine Twig and Vue
+
+ [Intro](guide-vue-twig.md)
+| [Part 1: Passing down a vue object](guide-vue-twig-part-1-object.md)
+| **[Part 2: VueStorage](guide-vue-twig-part-2-storage.md)**
+| [Part 3: Dynamic components](guide-vue-twig-part-3-dynamic-components.md)
+| [Part 4: v-models in your Symfony form](guide-vue-twig-part-4-form.md)
+
+## Part 2: VueStorage
 
 In the previous part you've seen how you can pass data from Twig to Vue using a 
 global `vue` object. 

@@ -6,6 +6,7 @@
 | **[Part 2: VueStorage](guide-vue-twig-part-2-storage.md)**
 | [Part 3: Dynamic components](guide-vue-twig-part-3-dynamic-components.md)
 | [Part 4: v-models in your Symfony form](guide-vue-twig-part-4-form.md)
+| [Part 5: fetching dynamic components](guide-vue-twig-part-5-fetching-dynamic-components.md)
 
 ## Part 2: VueStorage
 

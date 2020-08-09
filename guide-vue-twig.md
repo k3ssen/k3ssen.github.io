@@ -6,6 +6,7 @@
 | [Part 2: VueStorage](guide-vue-twig-part-2-storage.md)
 | [Part 3: Dynamic components](guide-vue-twig-part-3-dynamic-components.md)
 | [Part 4: v-models in your Symfony form](guide-vue-twig-part-4-form.md)
+| [Part 5: fetching dynamic components](guide-vue-twig-part-5-fetching-dynamic-components.md)
 
 ## Intro
 
@@ -22,6 +23,8 @@ In a service you can add data you want to pass down to your Vue instance.
 For edge cases and/or more flexibility you can utilize Dynamic components.
 4. **v-models in your Symfony form**  
 Automatically apply v-models to your Symfony forms.
+5. **Fetching dynamic components**  
+Use fetch to load a different page and have that rendered as component.
 
 It is assumed that you have some experience with both Symfony and Vuejs.
 
@@ -29,7 +32,7 @@ It is assumed that you have some experience with both Symfony and Vuejs.
 
 First things first: you need a symfony project with webpack installed and vue enabled:
 
-1.  Add symfony project: ` symfony new my_project_name --full`  
+1.  Add symfony project: `symfony new my_project_name --full`  
 (https://symfony.com/doc/current/setup.html)
 2. Install encore: `composer require symfony/webpack-encore-bundle`
 (https://symfony.com/doc/current/frontend/encore/installation.html)

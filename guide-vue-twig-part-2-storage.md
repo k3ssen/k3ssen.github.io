@@ -129,17 +129,31 @@ In the `template/base.html.twig` file we retrieve the data from the VueStorage s
 ```twig
 {% block javascripts %}
     {% block script %}{% endblock %}
-    {% set vueData = get_vue_data() | raw %}
-    {% if vueData %}
-        <script>
+    <script>
+        const vueServerData = {{ get_vue_data() | default(null) | raw }};
+        if (vueServerData || typeof vue === 'object') {
             vue = Object.assign({
-                data: {{ vueData }}
-            }, typeof vue === 'object' ? vue : {})
-        </script>
-    {% endif %}
+                data: () => ({}), // will be overwritten when provided vue-object already has data
+                delimiters: ['@{', '}'],
+            }, typeof vue === 'object' ? vue : {});
+            if (vueServerData) {
+                const vueObjectData = vue.data;
+                // Merge the vueObjectData with the vueServerData into an vue.data function
+                vue.data = () => ( Object.assign(
+                    vueServerData,
+                    typeof vueObjectData === 'function' ? vueObjectData(): vueObjectData
+                ));
+            }
+        }
+
+    </script>
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
 ```
+Here we make sure a vue object is created if vueServerData is provided. If a vue object has been
+created earlier on, then the objects are merged.
+After making sure there's a vue object, the vueServerData is merged with the data in the vue 
+object. 
 
 ## Example usage
 

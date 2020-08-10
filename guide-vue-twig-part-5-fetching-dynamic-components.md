@@ -45,7 +45,6 @@ For example, the code below shows the content of `/assets/js/components/FetchCom
     export default {
         data: () => ({
             component: null,
-            loading: true,
         }),
         props: {
             url: { type: String },
@@ -151,6 +150,31 @@ When your `base.html.twig` is extended, the entire page will be loaded, while by
  
 This will allow you to use a single route for loading the full webpage or just a part of it, based
 on whether it's a fetch request or not.
- 
+
+### Be aware of loaded javascript
+
+When you fetch content and load its javascript you might stumble upon some tricky situations:
+If you fetch a page and execute its javascript, then that javascript code will remain until the 
+entire page is reloaded. So if you fetch a different page afterwards, your javascript-code might
+be affected by an earlier fetched page. 
+
+For example, if you define `const vueServerData` (like in part2 about storage) and later you fetch
+another file that defines the same constant, then an error will be raised because of that redeclared
+constant.
+By using a global variable, such as `window.vueServerData` or just `vueServerData`, you can
+re-use this variable in multiple files, but you still need to be aware of tricky situations.
+  
+The global vue object for instance merges with the earlier defined vue-object, which is intended
+to be used in the `{% block script %}`, but if that block wasn't used, the vue-object defined in
+an earlier page could be used instead. 
+The `FetchComponent` purposely resets the vue-object before fetching a page for this particular
+reason.
+
+An important reason for using vue should be to add some structure to your code, so if you stick
+to that there shouldn't be all kinds of global variables spooking around in your application.
+
+> Though you should be wary of javascript when fetching pages, sometimes you can take advantage of that.
+> For example, you might have breadcrumbs residing in some vue component. You could update these
+> breadcrumbs by updating the value inside vue global observable.
  
 {% endraw %}
